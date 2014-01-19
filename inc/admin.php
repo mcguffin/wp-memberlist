@@ -48,7 +48,7 @@ class MemberlistAdmin {
 	}
 	function vcard_field($value,$user) {
 		$vcard_link = add_query_arg('vcard',$user->ID);
-		$icon = plugins_url('../img/vcard-icon-small',__FILE__);
+		$icon = plugins_url('img/vcard-icon-small.png',dirname(__FILE__));
 		return sprintf('<a title="%s" href="%s"><img src="%s" alt="icon" /></a>',__('Download vCard','memberlist'),$vcard_link,$icon);
 	}
 	function do_vcard( ) {
