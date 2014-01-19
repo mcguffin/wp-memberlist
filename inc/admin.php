@@ -158,5 +158,6 @@ class MemberlistAdmin {
 }
 
 
+global $memberlist_admin;
 $memberlist_admin = new MemberlistAdmin();
 

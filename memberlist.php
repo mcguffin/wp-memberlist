@@ -208,6 +208,7 @@ class Memberlist {
 
 }
 
+global $memberlist;
 $memberlist = new Memberlist();
 
 
