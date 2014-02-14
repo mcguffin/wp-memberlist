@@ -5,7 +5,7 @@ Plugin Name: Memberlist
 Plugin URI: https://github.com/mcguffin/wp-memberlist
 Description: Extends userdata by physical address and phone numbers. Outputs a memberlist.
 Author: Jörn Lund
-Version: 0.0.3
+Version: 0.0.4
 Author URI: https://github.com/mcguffin
 
 Text Domain: memberlist
