@@ -15,6 +15,7 @@ class MemberlistAdmin {
 		add_menu_page(__('Members','memberlist'),__('Members','memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);
 	}
 	function admin_page() {
+		global $memberlist;
 		$links = array( $this->link_shortcode(array('label'=>__('Mail everybody','memberlist'))) );
 		$links = apply_filters('memberlist_mail_links',$links );
 		?><div class="wrap"><?php
@@ -34,7 +35,7 @@ class MemberlistAdmin {
 			add_filter("memberlist_fields",array(&$this,'add_vcard_field'));
 			add_filter("memberlist_vcard_field" , array(&$this,'vcard_field') , 10 , 2 );
 		
-			echo Memberlist::shortcode( array('capability'=>'read','class'=>array( 'wp-list-table','widefat' )) );
+			echo $memberlist->shortcode( array('capability'=>'read','class'=>array( 'wp-list-table','widefat' )) );
 		?></div><?php
 	}
 	function add_vcard_field($fields) {
@@ -52,11 +53,12 @@ class MemberlistAdmin {
 		return sprintf('<a title="%s" href="%s"><img src="%s" alt="icon" /></a>',__('Download vCard','memberlist'),$vcard_link,$icon);
 	}
 	function do_vcard( ) {
+		global $memberlist;
 		if ( isset($_REQUEST['vcard']) && $user = new WP_User( $_REQUEST['vcard'] ) ) {
 			if ( ! get_option('memberlist_require_login') || is_user_logged_in() ) {
 				include plugin_dir_path(__FILE__)."vCard/vCard.class.php";
 				
-				$fields = Memberlist::get_fields();
+				$fields = $memberlist->get_fields();
 				$vcard = new vCard();
 				foreach ( array('first_name'=>'first_name','last_name'=>'last_name','display_name'=>'display_name', 'user_email' =>'email1') as $wp_prop => $vc_prop ) 
 					if ( $value = $user->$wp_prop ) 
@@ -85,12 +87,13 @@ class MemberlistAdmin {
 	}
 	
 	function link_shortcode( $atts , $content=null ) {
+		global $memberlist;
 		extract(wp_parse_args( $atts, array(
 			'label' => '',
 		)));
 		$emails = array();
 		$users = get_users( );
-		$fields = Memberlist::get_fields();
+		$fields = $memberlist->get_fields();
 		$filter = array();
 		foreach ( array_keys($fields) as $key )
 			if ( isset( $$key ) ) 
@@ -111,7 +114,8 @@ class MemberlistAdmin {
 	}
 
 	function add_user_fields( $profileuser ) {
-		$memberlist_fields = Memberlist::get_fields();
+		global $memberlist;
+		$memberlist_fields = $memberlist->get_fields();
 
 		foreach ( $memberlist_fields as $key => $item ) {
 			extract( $item );
@@ -149,7 +153,8 @@ class MemberlistAdmin {
 
 
 	function update_user( $user_ID ) {
-		$memberlist_fields = Memberlist::get_fields();
+		global $memberlist;
+		$memberlist_fields = $memberlist->get_fields();
 		foreach ( array_keys($memberlist_fields) as $key )
 			if ( isset($_POST["memberlist_{$key}"]) )
 				update_user_meta($user_ID , "memberlist_{$key}" , $_POST["memberlist_{$key}"]);

@@ -120,7 +120,7 @@ class Memberlist {
 
 		if ( is_array($class) )
 			$class = implode(' ',$class);
-		$fields = self::get_fields();
+		$fields = $this->get_fields();
 		$users = get_users( );
 		if ( ! get_option('memberlist_require_login') || is_user_logged_in() ) {
 			ob_start();
@@ -129,14 +129,14 @@ class Memberlist {
 					?><tr><?php
 						// before
 						foreach ( $fields as $key => $field ) {
-							self::print_field_head( $key , $field , 'before' );
+							$this->print_field_head( $key , $field , 'before' );
 						}
 						?><th><?php 
 						_e( 'Name' ) ;
 						?>, <?php
 						 _e( 'Email' ); ?></th><?php
 						foreach ( $fields as $key => $field ) {
-							self::print_field_head( $key , $field , 'after' );
+							$this->print_field_head( $key , $field , 'after' );
 						}
 						// after
 					?></tr><?php
@@ -147,7 +147,7 @@ class Memberlist {
 						if ( $capability && ! $user->has_cap( $capability ) )
 							continue;
 						foreach ( $fields as $key => $field ) {
-							self::print_field( $key , $field , $user , 'before' );
+							$this->print_field( $key , $field , $user , 'before' );
 						}
 					
 						?><td><?php
@@ -155,7 +155,7 @@ class Memberlist {
 							printf( '<br /><a href="mailto:%s">%s</a>' , $user->user_email, $user->user_email );
 						?></td><?php
 						foreach ( $fields as $key => $field ) {
-							self::print_field( $key , $field , $user , 'after' );
+							$this->print_field( $key , $field , $user , 'after' );
 						}
 					
 					?></tr><?php
@@ -208,7 +208,6 @@ class Memberlist {
 
 }
 
-global $memberlist;
 $memberlist = new Memberlist();
 
 
