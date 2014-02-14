@@ -210,34 +210,3 @@ class Memberlist {
 
 $memberlist = new Memberlist();
 
-
-
-/*
-function memberlist_archive_template($single) {
-    global $wp_query, $post;
-
-	if ($post->post_type == 'member' ) {
-		if ( file_exists( get_template_directory(). '/archive-member.php'))
-			return get_template_directory(). '/archive-member.php';
-		else if ( file_exists( plugin_dir_path(__FILE__). '/templates/archive-member.php'))
-			return plugin_dir_path(__FILE__) . '/templates/archive-staff.php';
-	}
-    return $single;
-}
-add_filter('archive_template', 'memberlist_archive_template');
-
-function memberlist_activate( ) {
-	memberlist_init();
-	flush_rewrite_rules();
-}
-register_activation_hook(__FILE__,'memberlist_activate');
-
-function memberlist_deactivate( ) {
-	flush_rewrite_rules();
-}
-register_deactivation_hook(__FILE__,'memberlist_deactivate');
-
-*/
-
-
-
