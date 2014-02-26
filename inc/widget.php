@@ -32,8 +32,14 @@ class Memberlist_Widget extends WP_Widget {
 		
 		?><ul class="memberlist"><?php
 		foreach ( $users as $user ) {
-			if ( $user->user_url ) 
-				printf( '<li class="memberlist-item"><a href="%s">%s</a></li>' ,  $user->user_url,$user->display_name );
+			$url = false;
+			if ( $memberpage = MemberPage::instance()->get_member_page( $user->ID ) )
+				$url = get_permalink( $memberpage->ID );
+			else if ( $user->user_url ) 
+				$url = $user->user_url;
+			
+			if ( $url )
+				printf( '<li class="memberlist-item"><a href="%s">%s</a></li>' ,  $url , $user->display_name );
 			else 
 				printf( '<li class="memberlist-item">%s</li>' ,  $user->display_name );
 		}
