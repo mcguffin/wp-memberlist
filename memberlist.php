@@ -20,7 +20,13 @@ Domain Path: /lang/
 */
 
 class Memberlist {
-	function __construct() {
+	private static $_instance = null;
+	static function instance() {
+		if ( is_null( self::$_instance ) )
+			self::$_instance = new self();
+		return self::$_instance;
+	}
+	private function __construct() {
 		add_action('init',array(&$this,'init'),99);
 		add_shortcode('members',array(&$this,'shortcode'));
 		add_shortcode('members_link',array(&$this,'link_shortcode'));
@@ -33,11 +39,19 @@ class Memberlist {
 		add_filter("memberlist_address_field" , array(&$this,'gather_address') , 10 , 2 );
 		
 		if ( is_admin() )
-			include plugin_dir_path(__FILE__) . '/inc/admin.php';
+			require_once plugin_dir_path(__FILE__) . '/inc/admin.php';
 
-		include plugin_dir_path(__FILE__) . '/inc/widget.php';
+		require_once plugin_dir_path(__FILE__) . '/inc/member-page.php';
+		require_once plugin_dir_path(__FILE__) . '/inc/widget.php';
+
+		register_activation_hook( __FILE__, array(&$this,'activation')  );
+		register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 
 	}
+	function activation() {
+		MemberPage::instance()->register_post_type();
+		flush_rewrite_rules();
+    }
 	function init() {
 		register_post_type(	'member', 
 			array(	'label' 			=> __('Members','memberlist'),
@@ -55,7 +69,7 @@ class Memberlist {
 	
 		add_option('memberlist_require_login',true);
 		add_option('memberlist_require_role','author');
-	
+		
 		load_plugin_textdomain( 'memberlist' , false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	}
 	function get_fields( ) {
@@ -207,6 +221,6 @@ class Memberlist {
 	}
 
 }
+Memberlist::instance();
 
-$memberlist = new Memberlist();
 

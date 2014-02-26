@@ -3,7 +3,14 @@
 
 
 class MemberlistAdmin {
-	function __construct() {
+	private static $_instance = null;
+	static function instance() {
+		if ( is_null( self::$_instance ) )
+			self::$_instance = new self();
+		return self::$_instance;
+	}
+
+	private function __construct() {
 		add_action('admin_menu',array(&$this,'menu_item'));
 		add_action('personal_options' , array(&$this,'add_user_fields') );
 		add_action( 'personal_options_update' , array(&$this,'update_user') );
@@ -15,7 +22,6 @@ class MemberlistAdmin {
 		add_menu_page(__('Members','memberlist'),__('Members','memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);
 	}
 	function admin_page() {
-		global $memberlist;
 		$links = array( $this->link_shortcode(array('label'=>__('Mail everybody','memberlist'))) );
 		$links = apply_filters('memberlist_mail_links',$links );
 		?><div class="wrap"><?php
@@ -35,7 +41,7 @@ class MemberlistAdmin {
 			add_filter("memberlist_fields",array(&$this,'add_vcard_field'));
 			add_filter("memberlist_vcard_field" , array(&$this,'vcard_field') , 10 , 2 );
 		
-			echo $memberlist->shortcode( array('capability'=>'read','class'=>array( 'wp-list-table','widefat' )) );
+			echo Memberlist::instance()->shortcode( array('capability'=>'read','class'=>array( 'wp-list-table','widefat' )) );
 		?></div><?php
 	}
 	function add_vcard_field($fields) {
@@ -87,13 +93,12 @@ class MemberlistAdmin {
 	}
 	
 	function link_shortcode( $atts , $content=null ) {
-		global $memberlist;
 		extract(wp_parse_args( $atts, array(
 			'label' => '',
 		)));
 		$emails = array();
 		$users = get_users( );
-		$fields = $memberlist->get_fields();
+		$fields = Memberlist::instance()->get_fields();
 		$filter = array();
 		foreach ( array_keys($fields) as $key )
 			if ( isset( $$key ) ) 
@@ -114,13 +119,14 @@ class MemberlistAdmin {
 	}
 
 	function add_user_fields( $profileuser ) {
-		global $memberlist;
-		$memberlist_fields = $memberlist->get_fields();
+		$memberlist_fields = Memberlist::instance()->get_fields();
 
 		foreach ( $memberlist_fields as $key => $item ) {
 			extract( $item );
 			?><th scope="row"><?php echo $label ?></th>
-			<td><fieldset><legend class="screen-reader-text"><?php
+			<td><?php 
+			
+				?><fieldset><legend class="screen-reader-text"><?php
 				?><span><?php echo $label ?></span></legend><?php
 				switch ($type) {
 					case 'bool':
@@ -153,8 +159,7 @@ class MemberlistAdmin {
 
 
 	function update_user( $user_ID ) {
-		global $memberlist;
-		$memberlist_fields = $memberlist->get_fields();
+		$memberlist_fields = Memberlist::instance()->get_fields();
 		foreach ( array_keys($memberlist_fields) as $key )
 			if ( isset($_POST["memberlist_{$key}"]) )
 				update_user_meta($user_ID , "memberlist_{$key}" , $_POST["memberlist_{$key}"]);
@@ -163,6 +168,5 @@ class MemberlistAdmin {
 }
 
 
-global $memberlist_admin;
-$memberlist_admin = new MemberlistAdmin();
+MemberlistAdmin::instance();
 
