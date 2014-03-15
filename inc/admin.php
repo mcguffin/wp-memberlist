@@ -24,6 +24,7 @@ class MemberlistAdmin {
 		add_action('load-post-new.php',array(&$this,'editor'));
 	}
 	
+	/* mce functions */
 	function editor() {
 		wp_enqueue_style( 'memberlist-editor' , plugins_url('/css/editor.css',dirname(__file__)) );
 	}
@@ -37,8 +38,8 @@ class MemberlistAdmin {
 		return $plugins_array;
 	}
 	
+	
 	function menu_item() {
-		// memberlist page
 		add_menu_page(__('Members','memberlist'),__('Members','memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);
 	}
 	function admin_page() {

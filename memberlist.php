@@ -12,13 +12,6 @@ Text Domain: memberlist
 Domain Path: /lang/
 */
 
-/*
-- add userdata input
-- add list output (private)
-
-
-*/
-
 class Memberlist {
 	private static $_instance = null;
 	static function instance() {
