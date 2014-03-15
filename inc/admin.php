@@ -16,7 +16,27 @@ class MemberlistAdmin {
 		add_action( 'personal_options_update' , array(&$this,'update_user') );
 		add_action( 'edit_user_profile_update' , array(&$this,'update_user') );
 		add_action('load-toplevel_page_memberlist',array(&$this,'do_vcard'));
+		
+		add_filter("mce_external_plugins", array(&$this,"mce_memberlist_js"));
+		add_filter('mce_buttons_2', array(&$this,"mce_buttons"));
+		
+		add_action('load-post.php',array(&$this,'editor'));
+		add_action('load-post-new.php',array(&$this,'editor'));
 	}
+	
+	function editor() {
+		wp_enqueue_style( 'memberlist-editor' , plugins_url('/css/editor.css',dirname(__file__)) );
+	}
+	function mce_buttons( $buttons ){
+		$buttons[] = "|";
+		$buttons[] = "members";
+		return $buttons;
+	}
+	function mce_memberlist_js( $plugins_array ){
+		$plugins_array['members'] = plugins_url('/js/mce-memberlist.js',dirname(__file__));
+		return $plugins_array;
+	}
+	
 	function menu_item() {
 		// memberlist page
 		add_menu_page(__('Members','memberlist'),__('Members','memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);

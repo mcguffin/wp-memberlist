@@ -1,0 +1,13 @@
+i.mce-i-memberlist:before {
+	font-family:'dashicons';
+	content: '\f110\f110';
+	letter-spacing:-0.66em;
+	position:relative;
+	left:-0.33em;
+	font-size:1.1em;
+	text-shadow:
+	   -1px -1px 0 #fff,
+		1px -1px 0 #fff,
+		-1px 1px 0 #fff,
+		 1px 1px 0 #fff;
+}
