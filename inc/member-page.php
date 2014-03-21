@@ -16,6 +16,7 @@ class MemberPage {
 		add_action( 'personal_options' , array(&$this,'add_memberpage_control') );
 		add_action( 'personal_options_update' , array(&$this,'update_profile') , 11 );
 		add_action( 'admin_bar_menu', array(&$this,'add_admin_bar_item') );
+		add_filter( 'map_meta_cap' , array( &$this , 'map_meta_cap' ) , 10 , 4 );
 	}
 	function add_admin_bar_item( $wp_admin_bar ) {
 		if ( $page = $this->get_member_page( ) ) {
@@ -55,13 +56,35 @@ class MemberPage {
 			'has_archive'			=> true,
 			'hierarchical'			=> false,
 			'menu_position'			=> 45,
-			'supports'				=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+			'supports'				=> array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		);
 		register_post_type( 'member-page' , $opts );
 	}
+	// --------------------------------------------------
+	// editing caps
+	// --------------------------------------------------
+	static function map_meta_cap($caps, $cap, $user_id, $args ) {
+		switch ( $cap ) {
+			case 'edit_post':
+			case 'delete_post':
+				if ( isset($args[0]) ) {
+					$post_ID = $args[0];
+					$post = get_post($post_ID);
+					if ( $post->post_type == 'member-page' ) {
+						if ( ! is_admin() && $post->post_author != $user_id ) {
+							$caps[] = 'do_not_allow';
+							break;
+						}
+					}
+				}
+				break;
+		}
+		return $caps;
+	}
 	function add_memberpage_control( $profileuser ){
 		$current_user = wp_get_current_user();
-		if (  $profileuser->ID == $current_user->ID || $this->user_has_member_page( $profileuser->ID ) ) {
+		
+		if ( current_user_can('edit_posts') ) {
 			?><th scope="row"><?php _e('Member page','memberlist') ?></th>
 			<td><?php 
 				if ( $profileuser->ID == $current_user->ID ) {
@@ -72,9 +95,15 @@ class MemberPage {
 						?><button name="create_member_page" value="1" class="button secondary"><?php _e('Create Member page') ?></button><?php
 						// edit member page
 					}
-				} else if ( $this->user_has_member_page( $profileuser->ID ) ) {
+				} else if ( $page = $this->get_member_page( $profileuser->ID ) ) {
 					//  visit memberpage
+					if ( current_user_can( 'edit_post', $page->ID ) ) {
+						edit_post_link( __('Edit Member Page','memberlist'),'','',$page->ID );
+					} else {
+						?><a href="<?php echo get_permalink( $page->ID ); ?>"><?php __('Visit Member Page','memberlist') ?></a><?php
+					}
 				}
+				$this->get_member_page( $profileuser->ID );
 			?></td>
 			</tr><?php
 		}
@@ -84,32 +113,28 @@ class MemberPage {
 		return (bool) $this->get_member_page( $user_id );
 	}
 	function create_member_page( ) {
-		if ( ! $this->user_has_member_page() ) {
+		if ( current_user_can('edit_posts') && ! $this->user_has_member_page() ) {
+			$user_id = get_current_user_id();
 			$post_data = array(
 				'post_type' => 'member-page',
 				'post_name' => wp_get_current_user()->user_login,
 				'post_title' => wp_get_current_user()->display_name,
 				'post_status' => 'draft',
+				'post_author' => $user_id,
 			);
 			$post_id = wp_insert_post( $post_data );
-			wp_redirect( get_edit_post_link($post_id,'redirect') );
+			update_user_meta( $user_id , '_member_page' , $post_id );
+			wp_redirect( get_edit_post_link( $post_id , 'redirect' ) );
 			exit();
 		}
 	}
 	function get_member_page( $user_id = null ) {
 		if ( is_null( $user_id ) )
 			$user_id = get_current_user_id();
-		$user = get_userdata($user_id );
-		if ( $user ) {
-			$posts = get_posts( array( 
-				'post_type' => 'member-page' , 
-				'post_status' => 'any' , 
-				'name' => $user->user_login ,
-			));
-			if (count($posts) > 0)
-				return $posts[0];
-		}
-		return false;
+		
+		$post_id = get_user_meta( $user_id , '_member_page' , true);
+		$post = get_post($post_id);
+		return $post;
 	}
 	function update_profile( $user_id ) {
 		if ( isset( $_POST['create_member_page'] ) && ! $this->user_has_member_page() ) {

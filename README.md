@@ -1,6 +1,7 @@
 # WordPress Memberlist #
 
 Extends WordPress default user data by physical address. Shows a memberlist in the backend.
+Adds a member page post type, where a member has the ability to edit ones personal page.
 
 ## Plugin API: ##
 
