@@ -5,9 +5,4 @@ i.mce-i-memberlist:before {
 	position:relative;
 	left:-0.33em;
 	font-size:1.1em;
-	text-shadow:
-	   -1px -1px 0 #fff,
-		1px -1px 0 #fff,
-		-1px 1px 0 #fff,
-		 1px 1px 0 #fff;
 }

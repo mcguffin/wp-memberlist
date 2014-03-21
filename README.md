@@ -52,7 +52,7 @@ add_filter('memberlist_print_secret','__return_false');`
 ### Filter: `memberlist_{$key}_field` ###
 
 Control field output.
-``
+```
 // Example:
 function my_thing_output( $field_content , $user ) {
 	if ( empty( $field_content ) )
