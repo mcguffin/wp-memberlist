@@ -133,8 +133,11 @@ class MemberPage {
 			$user_id = get_current_user_id();
 		
 		$post_id = get_user_meta( $user_id , '_member_page' , true);
-		$post = get_post($post_id);
-		return $post;
+		if ( $post_id ) {
+			$post = get_post($post_id);
+			return $post;
+		}
+		return false;
 	}
 	function update_profile( $user_id ) {
 		if ( isset( $_POST['create_member_page'] ) && ! $this->user_has_member_page() ) {
