@@ -7,6 +7,7 @@ Description: Extends userdata by physical address and phone numbers. Outputs a m
 Author: Jörn Lund
 Version: 0.0.7
 Author URI: https://github.com/mcguffin
+License: GPL2
 
 Text Domain: memberlist
 Domain Path: /lang/
