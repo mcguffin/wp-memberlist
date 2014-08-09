@@ -3,6 +3,8 @@
 Extends WordPress default user data by physical address. Shows a memberlist in the backend.
 Adds a member page post type, where a member has the ability to edit ones personal page.
 
+Tested with up to WP 4.0-beta3
+
 ## Plugin API: ##
 
 ### Filter `memberlist_fields` ###
