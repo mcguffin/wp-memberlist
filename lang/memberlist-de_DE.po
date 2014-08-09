@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Memberlist v0.0.1\n"
+"Project-Id-Version: Memberlist v0.0.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-11-09 21:41:47+0000\n"
+"PO-Revision-Date: 2014-08-09 15:30:44+0000\n"
 "Last-Translator: joern-lund <joern@podpirate.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,7 @@ msgstr ""
 "X-Textdomain-Support: yes"
 
 #. translators: plugin header field 'Name'
+#: inc/widget.php:10
 #: memberlist.php:0
 #@ memberlist
 msgid "Memberlist"
@@ -50,77 +51,183 @@ msgstr ""
 msgid "https://github.com/mcguffin"
 msgstr ""
 
-#. translators: plugin header field 'Version'
-#: memberlist.php:0
-#@ memberlist
-msgid "0.0.1"
-msgstr ""
-
-#: memberlist.php:25
+#: memberlist.php:71
 #@ memberlist
 msgid "Address"
 msgstr "Adresse"
 
-#: memberlist.php:31
+#: memberlist.php:78
 #@ memberlist
 msgid "ZIP"
 msgstr "PLZ"
 
-#: memberlist.php:37
+#: memberlist.php:85
 #@ memberlist
 msgid "City"
 msgstr "Stadt"
 
-#: memberlist.php:43
+#: memberlist.php:92
 #@ memberlist
 msgid "Phone"
 msgstr "Telefon"
 
-#: memberlist.php:49
+#: memberlist.php:99
 #@ memberlist
 msgid "Mobile"
 msgstr "Mobil"
 
-#: memberlist.php:60
-#: memberlist.php:94
-#: memberlist.php:112
+#: inc/admin.php:47
+#: inc/admin.php:53
+#: inc/widget.php:59
+#: memberlist.php:50
 #@ memberlist
 msgid "Members"
 msgstr "Mitglieder"
 
-#: memberlist.php:91
+#: inc/admin.php:50
 #@ memberlist
 msgid "Mail everybody"
 msgstr "Mail an alle"
 
-#: memberlist.php:179
+#: memberlist.php:142
 #@ default
 msgid "Name"
 msgstr ""
 
-#: memberlist.php:181
+#: memberlist.php:144
 #@ default
 msgid "Email"
 msgstr ""
 
-#: memberlist.php:212
+#: inc/admin.php:123
+#: memberlist.php:175
 #, php-format
 #@ memberlist
 msgid "Please <a href=\"%s\">login</a>"
 msgstr "Bitte <a href=\"%s\">einloggen</a>"
 
-#: memberlist.php:214
+#: inc/admin.php:125
+#: memberlist.php:177
 #@ default
 msgid "Insufficient Privileges"
 msgstr ""
 
-#: memberlist.php:241
+#: memberlist.php:207
 #@ default
 msgid "Yes"
 msgstr ""
 
-#: memberlist.php:241
+#: memberlist.php:207
 #@ default
 msgid "No"
+msgstr ""
+
+#: inc/admin.php:75
+#: inc/admin.php:88
+#@ memberlist
+msgid "VCard"
+msgstr ""
+
+#: inc/admin.php:98
+#@ memberlist
+msgid "Download vCard"
+msgstr "vCard herunterladen"
+
+#: inc/member-page.php:26
+#@ memberlist
+msgid "Edit My Member Page"
+msgstr "Meine Mitgliederseite bearbeiten"
+
+#: inc/member-page.php:33
+#: inc/member-page.php:45
+#@ memberlist
+msgid "Member Pages"
+msgstr "Mitgliederseiten"
+
+#: inc/member-page.php:34
+#@ memberlist
+msgid "Member Page"
+msgstr "Mitgliederseite"
+
+#: inc/member-page.php:35
+#@ memberlist
+msgid "Add New"
+msgstr "Neu hinzuf."
+
+#: inc/member-page.php:36
+#@ memberlist
+msgid "Add New Member Page"
+msgstr "Neue Mitgliederseite hinzuf."
+
+#: inc/member-page.php:37
+#: inc/member-page.php:101
+#@ memberlist
+msgid "Edit Member Page"
+msgstr "Mitgliederseite bearbeiten"
+
+#: inc/member-page.php:38
+#@ memberlist
+msgid "New Member Page"
+msgstr "Neue Mitgliederseite"
+
+#: inc/member-page.php:39
+#@ memberlist
+msgid "All Member Pages"
+msgstr "Alle Mitgliederseiten"
+
+#: inc/member-page.php:40
+#@ memberlist
+msgid "View Member Page"
+msgstr "Mitgliederseite ansehen"
+
+#: inc/member-page.php:41
+#@ memberlist
+msgid "Search Member Pages"
+msgstr "Mitgliederseiten suchen"
+
+#: inc/member-page.php:42
+#@ memberlist
+msgid "No Member Pages found"
+msgstr "Keine Mitgliederseiten gefunden"
+
+#: inc/member-page.php:43
+#@ memberlist
+msgid "No Member Pages found in Trash"
+msgstr "Keine Mitgliederseiten im Ppaierkorb gefunden"
+
+#: inc/member-page.php:88
+#@ memberlist
+msgid "Member page"
+msgstr "Mitgliederseite"
+
+#: inc/member-page.php:93
+#@ memberlist
+msgid "Edit my Member Page"
+msgstr "Meine Mitgliederseite bearbeiten"
+
+#: inc/member-page.php:95
+#@ memberlist
+msgid "Create Member page"
+msgstr "Mitgliederseite erstellen"
+
+#: inc/member-page.php:103
+#@ memberlist
+msgid "Visit Member Page"
+msgstr "Mitgliederseite besuchen"
+
+#: inc/widget.php:11
+#@ memberlist
+msgid "Shows a list of your Blog members"
+msgstr "Zeigt eine Liste aller Miglieder dieses Blogs"
+
+#: inc/widget.php:62
+#@ default
+msgid "Title:"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: memberlist.php:0
+#@ memberlist
+msgid "0.0.7"
 msgstr ""
 

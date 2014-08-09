@@ -92,7 +92,7 @@ class MemberPage {
 					if ( $page = $this->get_member_page( $current_user->ID ) ) {
 						edit_post_link( __('Edit my Member Page','memberlist'),'','',$page->ID );
 					} else {
-						?><button name="create_member_page" value="1" class="button secondary"><?php _e('Create Member page') ?></button><?php
+						?><button name="create_member_page" value="1" class="button secondary"><?php _e('Create Member page','memberlist') ?></button><?php
 						// edit member page
 					}
 				} else if ( $page = $this->get_member_page( $profileuser->ID ) ) {
