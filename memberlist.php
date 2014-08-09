@@ -5,7 +5,7 @@ Plugin Name: Memberlist
 Plugin URI: https://github.com/mcguffin/wp-memberlist
 Description: Extends userdata by physical address and phone numbers. Outputs a memberlist.
 Author: Jörn Lund
-Version: 0.0.7
+Version: 0.0.8
 Author URI: https://github.com/mcguffin
 License: GPL2
 
@@ -22,6 +22,7 @@ class Memberlist {
 	}
 	private function __construct() {
 		add_action('init',array(&$this,'init'),99);
+		add_action('plugins_loaded',array(&$this,'plugins_loaded'));
 		add_shortcode('members',array(&$this,'shortcode'));
 		add_shortcode('members_link',array(&$this,'link_shortcode'));
 
@@ -64,6 +65,8 @@ class Memberlist {
 		add_option('memberlist_require_login',true);
 		add_option('memberlist_require_role','author');
 		
+	}
+	function plugins_loaded() {
 		load_plugin_textdomain( 'memberlist' , false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	}
 	function get_fields( ) {
