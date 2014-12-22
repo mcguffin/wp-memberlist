@@ -56,7 +56,7 @@ class MemberPage {
 			'has_archive'			=> true,
 			'hierarchical'			=> false,
 			'menu_position'			=> 45,
-			'supports'				=> array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+			'supports'				=> array( 'title', 'editor', 'thumbnail', 'excerpt' , 'comments' ),
 		);
 		register_post_type( 'member-page' , $opts );
 	}
