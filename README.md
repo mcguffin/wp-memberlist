@@ -66,6 +66,7 @@ add_filter('memberlist_thing_field','my_thing_output',10,2);
 
 ## ToDo ##
  - [ ] Checkbox User is member
- - [ ] Populate userdata by vcard upload
- - [ ] Make MemberPages optional
- - [ ] ...
+ - [ ] Populate userdata through vcard upload
+ - [ ] Make MemberPage feature optional
+ - [ ] Allow members without email
+ 

@@ -3,231 +3,219 @@ msgstr ""
 "Project-Id-Version: Memberlist v0.0.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-09 15:30:44+0000\n"
-"Last-Translator: joern-lund <joern@podpirate.org>\n"
+"PO-Revision-Date: 2015-11-11 14:42+0100\n"
+"Last-Translator: Jörn Lund <joern@podpirate.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"Language: de_DE\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
+# @ wp-memberlist
 #. translators: plugin header field 'Name'
-#: inc/widget.php:10
-#: memberlist.php:0
-#@ memberlist
+#: inc/widget.php:10 memberlist.php:0
 msgid "Memberlist"
 msgstr ""
 
+# @ wp-memberlist
 #. translators: plugin header field 'PluginURI'
 #: memberlist.php:0
-#@ memberlist
 msgid "https://github.com/mcguffin/wp-memberlist"
 msgstr ""
 
+# @ wp-memberlist
 #. translators: plugin header field 'Description'
 #: memberlist.php:0
-#@ memberlist
 msgid "Extends userdata by physical address and phone numbers. Outputs a memberlist."
 msgstr ""
 
+# @ wp-memberlist
 #. translators: plugin header field 'Author'
 #: memberlist.php:0
-#@ memberlist
 msgid "Jörn Lund"
 msgstr ""
 
+# @ wp-memberlist
 #. translators: plugin header field 'AuthorURI'
 #: memberlist.php:0
-#@ memberlist
 msgid "https://github.com/mcguffin"
 msgstr ""
 
+# @ wp-memberlist
 #: memberlist.php:71
-#@ memberlist
 msgid "Address"
 msgstr "Adresse"
 
+# @ wp-memberlist
 #: memberlist.php:78
-#@ memberlist
 msgid "ZIP"
 msgstr "PLZ"
 
+# @ wp-memberlist
 #: memberlist.php:85
-#@ memberlist
 msgid "City"
 msgstr "Stadt"
 
+# @ wp-memberlist
 #: memberlist.php:92
-#@ memberlist
 msgid "Phone"
 msgstr "Telefon"
 
+# @ wp-memberlist
 #: memberlist.php:99
-#@ memberlist
 msgid "Mobile"
 msgstr "Mobil"
 
-#: inc/admin.php:47
-#: inc/admin.php:53
-#: inc/widget.php:59
-#: memberlist.php:50
-#@ memberlist
+# @ wp-memberlist
+#: inc/admin.php:47 inc/admin.php:53 inc/widget.php:59 memberlist.php:50
 msgid "Members"
 msgstr "Mitglieder"
 
+# @ wp-memberlist
 #: inc/admin.php:50
-#@ memberlist
 msgid "Mail everybody"
 msgstr "Mail an alle"
 
+# @ default
 #: memberlist.php:142
-#@ default
 msgid "Name"
 msgstr ""
 
+# @ default
 #: memberlist.php:144
-#@ default
 msgid "Email"
 msgstr ""
 
-#: inc/admin.php:123
-#: memberlist.php:175
+# @ wp-memberlist
+#: inc/admin.php:123 memberlist.php:175
 #, php-format
-#@ memberlist
 msgid "Please <a href=\"%s\">login</a>"
 msgstr "Bitte <a href=\"%s\">einloggen</a>"
 
-#: inc/admin.php:125
-#: memberlist.php:177
-#@ default
+# @ default
+#: inc/admin.php:125 memberlist.php:177
 msgid "Insufficient Privileges"
 msgstr ""
 
+# @ default
 #: memberlist.php:207
-#@ default
 msgid "Yes"
 msgstr ""
 
+# @ default
 #: memberlist.php:207
-#@ default
 msgid "No"
 msgstr ""
 
-#: inc/admin.php:75
-#: inc/admin.php:88
-#@ memberlist
+# @ wp-memberlist
+#: inc/admin.php:75 inc/admin.php:88
 msgid "VCard"
 msgstr ""
 
+# @ wp-memberlist
 #: inc/admin.php:98
-#@ memberlist
 msgid "Download vCard"
 msgstr "vCard herunterladen"
 
+# @ wp-memberlist
 #: inc/member-page.php:26
-#@ memberlist
 msgid "Edit My Member Page"
 msgstr "Meine Mitgliederseite bearbeiten"
 
-#: inc/member-page.php:33
-#: inc/member-page.php:45
-#@ memberlist
+# @ wp-memberlist
+#: inc/member-page.php:33 inc/member-page.php:45
 msgid "Member Pages"
 msgstr "Mitgliederseiten"
 
+# @ wp-memberlist
 #: inc/member-page.php:34
-#@ memberlist
 msgid "Member Page"
 msgstr "Mitgliederseite"
 
+# @ wp-memberlist
 #: inc/member-page.php:35
-#@ memberlist
 msgid "Add New"
 msgstr "Neu hinzuf."
 
+# @ wp-memberlist
 #: inc/member-page.php:36
-#@ memberlist
 msgid "Add New Member Page"
 msgstr "Neue Mitgliederseite hinzuf."
 
-#: inc/member-page.php:37
-#: inc/member-page.php:101
-#@ memberlist
+# @ wp-memberlist
+#: inc/member-page.php:37 inc/member-page.php:101
 msgid "Edit Member Page"
 msgstr "Mitgliederseite bearbeiten"
 
+# @ wp-memberlist
 #: inc/member-page.php:38
-#@ memberlist
 msgid "New Member Page"
 msgstr "Neue Mitgliederseite"
 
+# @ wp-memberlist
 #: inc/member-page.php:39
-#@ memberlist
 msgid "All Member Pages"
 msgstr "Alle Mitgliederseiten"
 
+# @ wp-memberlist
 #: inc/member-page.php:40
-#@ memberlist
 msgid "View Member Page"
 msgstr "Mitgliederseite ansehen"
 
+# @ wp-memberlist
 #: inc/member-page.php:41
-#@ memberlist
 msgid "Search Member Pages"
 msgstr "Mitgliederseiten suchen"
 
+# @ wp-memberlist
 #: inc/member-page.php:42
-#@ memberlist
 msgid "No Member Pages found"
 msgstr "Keine Mitgliederseiten gefunden"
 
+# @ wp-memberlist
 #: inc/member-page.php:43
-#@ memberlist
 msgid "No Member Pages found in Trash"
 msgstr "Keine Mitgliederseiten im Ppaierkorb gefunden"
 
+# @ wp-memberlist
 #: inc/member-page.php:88
-#@ memberlist
 msgid "Member page"
 msgstr "Mitgliederseite"
 
+# @ wp-memberlist
 #: inc/member-page.php:93
-#@ memberlist
 msgid "Edit my Member Page"
 msgstr "Meine Mitgliederseite bearbeiten"
 
+# @ wp-memberlist
 #: inc/member-page.php:95
-#@ memberlist
 msgid "Create Member page"
 msgstr "Mitgliederseite erstellen"
 
+# @ wp-memberlist
 #: inc/member-page.php:103
-#@ memberlist
 msgid "Visit Member Page"
 msgstr "Mitgliederseite besuchen"
 
+# @ wp-memberlist
 #: inc/widget.php:11
-#@ memberlist
 msgid "Shows a list of your Blog members"
 msgstr "Zeigt eine Liste aller Miglieder dieses Blogs"
 
+# @ default
 #: inc/widget.php:62
-#@ default
 msgid "Title:"
 msgstr ""
 
+# @ wp-memberlist
 #. translators: plugin header field 'Version'
 #: memberlist.php:0
-#@ memberlist
 msgid "0.0.7"
 msgstr ""
-
