@@ -44,13 +44,13 @@ class MemberlistAdmin {
 	
 	
 	function menu_item() {
-		add_menu_page(__('Members','memberlist'),__('Members','memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);
+		add_menu_page(__('Members','wp-memberlist'),__('Members','wp-memberlist'),'read','memberlist',array(&$this,'admin_page'),'',50);
 	}
 	function admin_page() {
-		$links = array( $this->link_shortcode(array('label'=>__('Mail everybody','memberlist'))) );
+		$links = array( $this->link_shortcode(array('label'=>__('Mail everybody','wp-memberlist'))) );
 		$links = apply_filters('memberlist_mail_links',$links );
 		?><div class="wrap"><?php
-		?><h2><?php _e('Members','memberlist'); ?></h2><?php
+		?><h2><?php _e('Members','wp-memberlist'); ?></h2><?php
 			if ( $links ) {
 				?><ul class="subsubsub"><?php
 					foreach ( $links as $i=>$link ) {
@@ -72,7 +72,7 @@ class MemberlistAdmin {
 	
 	/* user list table */
 	function add_user_list_vcard_column($columns) {
-		$columns['vcard'] = __('VCard','memberlist');
+		$columns['vcard'] = __('VCard','wp-memberlist');
 		return $columns;
 	}
 	function user_list_vcard_column( $column_content , $column_name , $user_ID ) {
@@ -85,7 +85,7 @@ class MemberlistAdmin {
 	/* memberlist page */
 	function add_vcard_field($fields) {
 		$fields['vcard'] = array(
-			'label' => __('VCard','memberlist'),
+			'label' => __('VCard','wp-memberlist'),
 			'description' => '',
 			'type'	=> 'none',
 			'placement' => 'after',
@@ -95,7 +95,7 @@ class MemberlistAdmin {
 	function vcard_field($value,$user) {
 		$vcard_link = add_query_arg('vcard',$user->ID);
 		$icon = plugins_url('img/vcard-icon-small.png',dirname(__FILE__));
-		return sprintf('<a title="%s" href="%s"><img src="%s" alt="icon" /></a>',__('Download vCard','memberlist'),$vcard_link,$icon);
+		return sprintf('<a title="%s" href="%s"><img src="%s" alt="icon" /></a>',__('Download vCard','wp-memberlist'),$vcard_link,$icon);
 	}
 	function do_vcard( ) {
 		if ( isset($_REQUEST['vcard']) && $user = new WP_User( $_REQUEST['vcard'] ) ) {
@@ -120,7 +120,7 @@ class MemberlistAdmin {
 			}
 		} else {
 			if ( ! is_user_logged_in() ) 
-				$ret = sprintf(__('Please <a href="%s">login</a>','memberlist'),wp_login_url());
+				$ret = sprintf(__('Please <a href="%s">login</a>','wp-memberlist'),wp_login_url());
 			else 
 				$ret = __('Insufficient Privileges');
 		}

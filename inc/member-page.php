@@ -23,26 +23,26 @@ class MemberPage {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'user-actions',
 				'id'     => 'edit-memberpage',
-				'title'  => __( 'Edit My Member Page','memberlist' ),
+				'title'  => __( 'Edit My Member Page','wp-memberlist' ),
 				'href' => get_edit_post_link( $page->ID ),
 			) );
 		}
 	}
 	function register_post_type( ) {
 		$labels = array(
-			'name'               => __('Member Pages','memberlist'),
-			'singular_name'      => __('Member Page','memberlist'),
-			'add_new'            => __('Add New','memberlist'),
-			'add_new_item'       => __('Add New Member Page','memberlist'),
-			'edit_item'          => __('Edit Member Page','memberlist'),
-			'new_item'           => __('New Member Page','memberlist'),
-			'all_items'          => __('All Member Pages','memberlist'),
-			'view_item'          => __('View Member Page','memberlist'),
-			'search_items'       => __('Search Member Pages','memberlist'),
-			'not_found'          => __('No Member Pages found','memberlist'),
-			'not_found_in_trash' => __('No Member Pages found in Trash','memberlist'),
+			'name'               => __('Member Pages','wp-memberlist'),
+			'singular_name'      => __('Member Page','wp-memberlist'),
+			'add_new'            => __('Add New','wp-memberlist'),
+			'add_new_item'       => __('Add New Member Page','wp-memberlist'),
+			'edit_item'          => __('Edit Member Page','wp-memberlist'),
+			'new_item'           => __('New Member Page','wp-memberlist'),
+			'all_items'          => __('All Member Pages','wp-memberlist'),
+			'view_item'          => __('View Member Page','wp-memberlist'),
+			'search_items'       => __('Search Member Pages','wp-memberlist'),
+			'not_found'          => __('No Member Pages found','wp-memberlist'),
+			'not_found_in_trash' => __('No Member Pages found in Trash','wp-memberlist'),
 			'parent_item_colon'  => '',
-			'menu_name'          => __('Member Pages','memberlist'),
+			'menu_name'          => __('Member Pages','wp-memberlist'),
 		);
 		$opts = array(
 			'labels'				=> $labels,
@@ -85,22 +85,22 @@ class MemberPage {
 		$current_user = wp_get_current_user();
 		
 		if ( current_user_can('edit_posts') ) {
-			?><th scope="row"><?php _e('Member page','memberlist') ?></th>
+			?><th scope="row"><?php _e('Member page','wp-memberlist') ?></th>
 			<td><?php 
 				if ( $profileuser->ID == $current_user->ID ) {
 					// create page link
 					if ( $page = $this->get_member_page( $current_user->ID ) ) {
-						edit_post_link( __('Edit my Member Page','memberlist'),'','',$page->ID );
+						edit_post_link( __('Edit my Member Page','wp-memberlist'),'','',$page->ID );
 					} else {
-						?><button name="create_member_page" value="1" class="button secondary"><?php _e('Create Member page','memberlist') ?></button><?php
+						?><button name="create_member_page" value="1" class="button secondary"><?php _e('Create Member page','wp-memberlist') ?></button><?php
 						// edit member page
 					}
 				} else if ( $page = $this->get_member_page( $profileuser->ID ) ) {
 					//  visit memberpage
 					if ( current_user_can( 'edit_post', $page->ID ) ) {
-						edit_post_link( __('Edit Member Page','memberlist'),'','',$page->ID );
+						edit_post_link( __('Edit Member Page','wp-memberlist'),'','',$page->ID );
 					} else {
-						?><a href="<?php echo get_permalink( $page->ID ); ?>"><?php __('Visit Member Page','memberlist') ?></a><?php
+						?><a href="<?php echo get_permalink( $page->ID ); ?>"><?php __('Visit Member Page','wp-memberlist') ?></a><?php
 					}
 				}
 				$this->get_member_page( $profileuser->ID );
