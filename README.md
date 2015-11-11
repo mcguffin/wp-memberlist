@@ -63,3 +63,8 @@ function my_thing_output( $field_content , $user ) {
 }
 add_filter('memberlist_thing_field','my_thing_output',10,2);
 ```
+
+## ToDo ##
+ - [ ] Checkbox User is member
+ - [ ] Populate userdata by vcard upload
+ - [ ] ...

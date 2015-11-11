@@ -7,8 +7,8 @@ class Memberlist_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'memberlist_widget', // Base ID
-			__('Memberlist', 'memberlist'), // Name
-			array( 'description' => __( 'Shows a list of your Blog members', 'memberlist' ), ) // Args
+			__('Memberlist', 'wp-memberlist'), // Name
+			array( 'description' => __( 'Shows a list of your Blog members', 'wp-memberlist' ), ) // Args
 		);
 	}
 
@@ -56,7 +56,7 @@ class Memberlist_Widget extends WP_Widget {
 		if ( isset( $instance[ 'title' ] ) )
 			$title = $instance[ 'title' ];
 		else
-			$title = __( 'Members', 'memberlist' );
+			$title = __( 'Members', 'wp-memberlist' );
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 

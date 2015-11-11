@@ -9,8 +9,8 @@ Version: 0.0.8
 Author URI: https://github.com/mcguffin
 License: GPL2
 
-Text Domain: memberlist
-Domain Path: /lang/
+Text Domain: wp-memberlist
+Domain Path: /languages/
 */
 
 /*  Copyright 2014  Jörn Lund  (email : joern AT podpirate DOT org)
@@ -52,7 +52,7 @@ class Memberlist {
 		
 		if ( is_admin() )
 			require_once plugin_dir_path(__FILE__) . '/inc/admin.php';
-
+		
 		require_once plugin_dir_path(__FILE__) . '/inc/member-page.php';
 		require_once plugin_dir_path(__FILE__) . '/inc/widget.php';
 
@@ -66,7 +66,7 @@ class Memberlist {
     }
 	function init() {
 		register_post_type(	'member', 
-			array(	'label' 			=> __('Members','memberlist'),
+			array(	'label' 			=> __('Members','wp-memberlist'),
 					'public' 			=> true,
 					'can_export'		=> false,
 					'show_ui' 			=> false, // UI in admin panel
@@ -84,40 +84,40 @@ class Memberlist {
 		
 	}
 	function plugins_loaded() {
-		load_plugin_textdomain( 'memberlist' , false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+		load_plugin_textdomain( 'wp-memberlist' , false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 	function get_fields( ) {
 		$memberlist_fields = array(
 			'address' => array(
-				'label' => __('Address','memberlist'),
+				'label' => __('Address','wp-memberlist'),
 				'description' => '',
 				'type'	=> 'text',
 				'placement' => 'after',
 				'vcard_prop' => 'home_address',
 			),
 			'zip' => array(
-				'label' => __('ZIP','memberlist'),
+				'label' => __('ZIP','wp-memberlist'),
 				'description' => '',
 				'type'	=> 'text',
 				'placement' => 'after',
 				'vcard_prop' => 'home_postal_code'
 			),
 			'city' => array(
-				'label' => __('City','memberlist'),
+				'label' => __('City','wp-memberlist'),
 				'description' => '',
 				'type'	=> 'text',
 				'placement' => 'after',
 				'vcard_prop' => 'home_city'
 			),
 			'phone' => array(
-				'label' => __('Phone','memberlist'),
+				'label' => __('Phone','wp-memberlist'),
 				'description' => '',
 				'type'	=> 'text',
 				'placement' => 'after',
 				'vcard_prop' => 'home_tel'
 			),
 			'mobile' => array(
-				'label' => __('Mobile','memberlist'),
+				'label' => __('Mobile','wp-memberlist'),
 				'description' => '',
 				'type'	=> 'text',
 				'placement' => 'after',
@@ -193,7 +193,7 @@ class Memberlist {
 			$ret = ob_get_clean();
 		} else {
 			if ( ! is_user_logged_in() ) 
-				$ret = sprintf(__('Please <a href="%s">login</a>','memberlist'),wp_login_url());
+				$ret = sprintf(__('Please <a href="%s">login</a>','wp-memberlist'),wp_login_url());
 			else 
 				$ret = __('Insufficient Privileges');
 		}
